@@ -2,14 +2,14 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
-import matplotlib.ticker as mticker
-from matplotlib.ticker import ScalarFormatter
 from tqdm import tqdm
 
-from plot_setting import *
+import pickle
 
 import pdb
+
+
+path_rel = "../../sim_data/single_neuron/"
 
 def sigm(x):
 	#return np.tanh(x/2.)
@@ -192,8 +192,6 @@ def main(n_t_learn = 500000, X_p = np.random.normal(0.,1.,(1000000,10)), X_d = n
 
 	if __name__ == "__main__":
 		
-		path_rel = "../../sim_data/single_neuron/"
-
 		np.save(path_rel + "X_p.npy",X_p)
 		np.save(path_rel + "X_d.npy",X_d)
 
@@ -211,7 +209,19 @@ def main(n_t_learn = 500000, X_p = np.random.normal(0.,1.,(1000000,10)), X_d = n
 
 		np.save(path_rel + "th_p.npy",th_p_rec)
 		np.save(path_rel + "th_d.npy",th_d_rec)
-		
+
+		params = {	'n_t_learn':n_t_learn,
+					'alpha_pd':alpha_pd,
+					'gain_pd':gain_pd,
+					'gain_d_sign_inv':gain_d_sign_inv,
+					'w_prox_total':w_prox_total,
+					'w_dist_total':w_dist_total,
+					'mu_learn':mu_learn,
+					'mu_hom':mu_hom,
+					'mu_avg':mu_avg}
+		with open(path_rel + "params.p","wb") as writer:
+			pickle.dump(params,writer)
+
 		pdb.set_trace()
 
 
@@ -225,14 +235,14 @@ if __name__ == "__main__":
 		X_rand_sequ[:,k] = gen_rand_sequ(500,2000000*0.1,0.1,1,2.)[:,0]
 
 	
-	np.save("rand_chaotic_sequ.npy",X_rand_sequ)
+	np.save(path_rel + "rand_chaotic_sequ.npy",X_rand_sequ)
 	'''	
 
-	X_p_sequ = np.load("rand_chaotic_sequ.npy")[:,:10]
+	X_p_sequ = np.load(path_rel + "rand_chaotic_sequ.npy")[:,:10]
 
 	#X_d_sequ = np.ndarray((2000000,10))
 
-	X_d_sequ = np.array([np.load("rand_chaotic_sequ.npy")[:,0]]).T
+	X_d_sequ = np.array([np.load(path_rel + "rand_chaotic_sequ.npy")[:,0]]).T
 
 	#X_d_sequ[:,:2] *= 2.
 	#X_d_sequ[:,1] = X_d_sequ[:,0]*0.9 +  X_d_sequ[:,1]*0.1
