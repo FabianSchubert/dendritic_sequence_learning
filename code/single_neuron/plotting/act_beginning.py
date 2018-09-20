@@ -3,8 +3,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
-
-plt.style.use('../../../misc/custom_style.mplstyle')
+from plot_settings import *
 
 def sigm(x):
 	#return np.tanh(x/2.)
@@ -13,9 +12,6 @@ def sigm(x):
 def act_pd(p,d,alpha,gain):
 
 	return (sigm(gain*d) + alpha*sigm(gain*p)*sigm(-gain*d))*2.-1.
-
-
-simfold = "../../../sim_data/single_neuron/"
 
 I_p_rec = np.load(simfold + "I_p.npy")
 I_d_rec = np.load(simfold + "I_d.npy")
@@ -47,5 +43,7 @@ ax_act_pd_beginning.set_ylabel("$I_{d}$")
 ax_act_pd_beginning.set_title("First " + str(int(100.*t_wind/n_t_learn))+"% of learning phase")
 
 plt.tight_layout()
+
+fig_act_pd_beginning.savefig(plotsfold + "act_pd_beginning." + dat_format)
 
 plt.show()

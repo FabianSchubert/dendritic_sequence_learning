@@ -3,10 +3,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
-
-plt.style.use('../../../misc/custom_style.mplstyle')
-
-simfold = "../../../sim_data/single_neuron/"
+from plot_settings import *
 
 figdim = (5.,2.5)
 
@@ -24,5 +21,7 @@ ax_w_prox.set_ylabel("$w_{p}$")
 #ax_w_prox.get_xaxis().set_major_formatter(scalform)
 
 plt.tight_layout()
+
+fig_w_prox.savefig(plotsfold + "w_prox." + dat_format)
 
 plt.show()

@@ -3,10 +3,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
-
-plt.style.use('../../../misc/custom_style.mplstyle')
-
-simfold = "../../../sim_data/single_neuron/"
+from plot_settings import *
 
 X_d = np.load(simfold + "X_d.npy")
 
@@ -25,5 +22,7 @@ ax_X_d.set_xlabel("#t")
 ax_X_d.set_ylabel("$x_{d}$")
 
 plt.tight_layout()
+
+fig_X_d.savefig(plotsfold + "X_d." + dat_format)
 
 plt.show()
