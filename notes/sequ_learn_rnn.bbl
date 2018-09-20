@@ -1,0 +1,49 @@
+\begin{thebibliography}{1}
+
+\bibitem{Rumelhart_1988}
+David~E. Rumelhart, Geoffrey~E. Hinton, and Ronald~J. Williams.
+\newblock {Neurocomputing: Foundations of Research}.
+\newblock chapter Learning Representations by Back-propagating Errors, pages
+  696--699. MIT Press, Cambridge, MA, USA, 1988.
+
+\bibitem{Elman_1990}
+J.~L. Elman.
+\newblock {Finding Structure in Time}.
+\newblock {\em Cognitive Science}, 14(2):179--211, 1990.
+
+\bibitem{Jordan_1989}
+Michael~I. Jordan.
+\newblock {Serial Order: {A} Parallel, Distributed Processing Approach}.
+\newblock In Jeffrey~L. Elman and David~E. Rumelhart, editors, {\em Advances in
+  Connectionist Theory: {S}peech}. Erlbaum, Hillsdale, NJ, 1989.
+
+\bibitem{Friston_2005}
+K.~Friston.
+\newblock {A theory of cortical responses}.
+\newblock {\em Philosophical Transactions of the Royal Society of London B:
+  Biological Sciences}, 360(1456):815--836, 2005.
+
+\bibitem{OReilly_2014}
+R.~C. O'Reilly, D.~Wyatte, and J.~Rohrlich.
+\newblock {Learning Through Time in the Thamocortical Loops}.
+\newblock {\em arXiv:1407.3432}, 2014.
+
+\bibitem{Clopath_Bono_2017}
+C.~Clopath and J.~Bono.
+\newblock {Modeling somatic and dendritic spike mediated plasticity at the
+  single neuron and network level}.
+\newblock {\em Nature Communications}, 2017.
+
+\bibitem{Shai_2015}
+A.~S. Shai, C.~A. Anastassiou, M.~E. Larkum, and C.~Koch.
+\newblock {Physiology of Layer 5 Pyramidal Neurons in Mouse Primary Visual
+  Cortex: Coincidence Detection through Bursting}.
+\newblock {\em PLOS Computational Biology}, 11(3), 2015.
+
+\bibitem{Jaeger_2010}
+Herbert Jaeger.
+\newblock {The ``echo state” approach to analysing and training recurrent
+  neural networks – with an Erratum note}.
+\newblock 2010.
+
+\end{thebibliography}

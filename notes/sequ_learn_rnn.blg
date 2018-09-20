@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: sequ_learn_rnn.aux
+The style file: unsrt.bst
+Database file #1: /home/fschubert/work/lit_base.bib.bib
+Warning--empty booktitle in Rumelhart_1988
+Warning--empty booktitle in Jaeger_2010
+You've used 8 entries,
+            1791 wiz_defined-function locations,
+            506 strings with 4999 characters,
+and the built_in function-call counts, 1713 in all, are:
+= -- 149
+> -- 68
+< -- 2
++ -- 26
+- -- 18
+* -- 101
+:= -- 279
+add.period$ -- 26
+call.type$ -- 8
+change.case$ -- 8
+chr.to.int$ -- 0
+cite$ -- 10
+duplicate$ -- 88
+empty$ -- 179
+format.name$ -- 18
+if$ -- 387
+int.to.chr$ -- 0
+int.to.str$ -- 8
+missing$ -- 8
+newline$ -- 43
+num.names$ -- 10
+pop$ -- 29
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 36
+stack$ -- 0
+substring$ -- 78
+swap$ -- 17
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 15
+width$ -- 9
+write$ -- 88
+(There were 2 warnings)
