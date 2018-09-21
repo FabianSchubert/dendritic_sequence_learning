@@ -197,7 +197,7 @@ Plugging this approximation into \eqref{eq:single_neur_4}, we get
 \end{align}
 Further simplification of this equation leads to
 \begin{align}
-\Delta w_{pi} &\approx \epsilon'_w \sum_j \left( \alpha C^{xx}_{ij} - \gamma C^{dxx}_{ij}\right)w_{pj} + (2-\alpha) C^{dx}_i \\
+\Delta w_{pi} &\approx \epsilon'_w \sum_j \left( \alpha C^{xx}_{ij} - \gamma C^{dxx}_{ij}\right)w_{pj} + (2-\alpha) C^{dx}_i \label{eq:approx_delta_w} \\
 C^{xx}_{ij} &\equiv \avg{\left(x_i - \avg{x_i} \right)\left( x_j - \avg{x_j} \right)} \\
 C^{dxx}_{ij} &\equiv \avg{\left(d - \avg{d} \right) \left(x_i - \avg{x_i} \right)\left( x_j - \avg{x_j} \right)} \\
 C^{dx}_i &\equiv \avg{\left(d - \avg{d} \right) \left(x_i - \avg{x_i} \right)}
@@ -212,6 +212,12 @@ For a first comparison between full weight dynamics and approximation, see Fig. 
 \caption{Comparison of weight dynamics between analytic approximation and full simulation.}
 \label{fig:weight_dyn_analytic_comp}
 \end{figure}
+
+Furthermore, if we ignore the term $C^{dxx}$ (which turned out to be negligible upon numeric inspection), we can compare \eqref{eq:approx_delta_w} with the expression that we get if we calculate the negative derivative of the mean squared error between proximal and distal input:
+\begin{equation}
+-\partial_{w_{pi}} \frac{1}{2}\avg{\left( p - d \right)^2} = -\sum_j C^{xx}_{ij} w_{pj} + C^{dx}_i \;
+\end{equation} 
+We can see an apparent similarity, however, we would need to set $\alpha$ to negative values to achieve the same signs of terms in \eqref{eq:approx_delta_w}.
 
 \subsection{Adding Plasticity to the Distal Input}
 
