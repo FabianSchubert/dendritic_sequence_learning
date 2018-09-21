@@ -9,7 +9,7 @@ import pickle
 import pdb
 
 
-path_rel = "../../sim_data/single_neuron/"
+path_rel = "../../../../sim_data/single_neuron/one_distal_mult_prox/"
 
 def sigm(x):
 	#return np.tanh(x/2.)
@@ -238,11 +238,11 @@ if __name__ == "__main__":
 	np.save(path_rel + "rand_chaotic_sequ.npy",X_rand_sequ)
 	'''	
 
-	X_p_sequ = np.load(path_rel + "rand_chaotic_sequ.npy")[:,:10]
+	X_p_sequ = np.load(path_rel + "../rand_chaotic_sequ.npy")[:,:10]
 
 	#X_d_sequ = np.ndarray((2000000,10))
 
-	X_d_sequ = np.array([np.load(path_rel + "rand_chaotic_sequ.npy")[:,0]]).T
+	X_d_sequ = np.array([np.load(path_rel + "../rand_chaotic_sequ.npy")[:,0]]).T
 
 	#X_d_sequ[:,:2] *= 2.
 	#X_d_sequ[:,1] = X_d_sequ[:,0]*0.9 +  X_d_sequ[:,1]*0.1
