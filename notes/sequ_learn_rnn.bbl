@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{Rumelhart_1988}
 David~E. Rumelhart, Geoffrey~E. Hinton, and Ronald~J. Williams.
@@ -45,5 +45,16 @@ Herbert Jaeger.
 \newblock {The ``echo state” approach to analysing and training recurrent
   neural networks – with an Erratum note}.
 \newblock 2010.
+
+\bibitem{Yi_2017}
+G.~Yi, J.~Wang, X.~Wei, and B.~Deng.
+\newblock {Action potential initiation in a two-compartment model of pyramidal
+  neuron mediated by dendritic $\mathrm{Ca}^{2+}$ spike}.
+\newblock {\em Scientific Reports}, 7(1), apr 2017.
+
+\bibitem{Urbanczik_2014}
+R.~Urbanczik and W.~Senn.
+\newblock {Learning by the Dendritic Prediction of Somatic Spiking}.
+\newblock {\em Neuron}, 81(3):521--528, feb 2014.
 
 \end{thebibliography}

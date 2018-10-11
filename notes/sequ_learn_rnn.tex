@@ -230,6 +230,15 @@ Instead of a single fixed distal input, we used multiple distal inputs with weig
 \label{fig:dist_plast_comp}
 \end{figure}
 
+\subsection{Interpretation of the Results}
+
+As a minimal interpretation of the observed effects, we denote that our activation function gives distal inputs a stronger influence on postsynaptic activity than somatic input. In fact, if both proximal and distal weights obey the same learning principle, the linearized plasticity rule \eqref{eq:approx_delta_w} reduces to a simple Hebbian covariance learning rule, where proximal inputs are pre-amplified by a factor $\alpha$ and distal inputs by a factor $2-\alpha$. As such, learning still convergences to the principle component of the rescaled inputs.
+
+Even though this reduction of the learning process to the linearized case might let the presented results appear ``trivial", the advantage of the full nonlinear activation function becomes apparent in the absence of distal inputs: non-zero postsynaptic activity can be achieved with much less somatic input than what would expect in the linear/point neuron case.
+
+\subsubsection{$\rm Ca^{2+}$ Spikes Explain Two Separate Modes of Output Activity}
+A study on a two-compartment model of coupled two-dimensional spiking neuron models has shown that the generation of $\rm Ca^{2+}$ in the dendritic compartment provides an explanation for the appearance of a sharp transition between fast-firing and slow-firing somatic activity \cite{Yi_2017}.
+
 
 \subsection{Application to a Recurrent Network}
 
@@ -262,6 +271,10 @@ The results are shown in Fig. \ref{fig:echo_state_network_pd_act_grad_desc}.
 \item Use p.-d. activation in the reservoir. Problem: Requires more tuning of parameters (thresholds etc.) to get the ``echo-state property".
 \item Is this a good architecture for generalization/multiple layers? Where do feed forward connections go in?
 \end{itemize}
+
+
+\subsection{Comparison to a Two-Compartment Model with Error Minimization}
+In a publication by Urbanczik and Senn, somatic and dendritic interaction takes place in a two-compartment approach, where both compartments are modeled as passive capacitors \cite{Urbanczik_2014}. Somatic spiking is modeled as a Poisson process with a rate given by the sigmoid function of the somatic voltage. In contrast to our model, dendritic plasticity is then driven by an error term between somatic spiking activity and the activity that would be present in the soma if only dendritic input was present. This allows single neurons to precisely learn a teaching signal. Furthermore, it was shown that such a learning algorithm allows the formation of associative memory in a recurrent network, as well as the emergence of feed-forward topographic maps (onto the dendritic compartment). The authors claim that using the two-compartment model justifies the use of an error driven plasticity rule. While it is reasonable that compartments could temporally store two different values---voltages in this case---which are to be compared, it is not obvious how such a comparison might be implemented. In particular, the rule proposed in the paper contains some hypothetical somatic activity, derived from the dendritic voltage, whose biological origin remains unclear.
 
 
 \bibliographystyle{unsrt}
