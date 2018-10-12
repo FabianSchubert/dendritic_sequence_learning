@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import matplotlib.pyplot as plt
 
 style = {
@@ -28,7 +30,7 @@ style = {
 
 plt.style.use(style)
 
-
+DAT_FORMAT = "pdf"
 
 '''
 simfold = "../../../../sim_data/single_neuron/one_distal_mult_prox/"

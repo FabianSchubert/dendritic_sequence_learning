@@ -3,11 +3,15 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
-from plot_settings import *
+
+from dendritic_sequence_learn.plot_settings import *
+from dendritic_sequence_learn.general_settings import SIMFOLD, PLOTSFOLD
+SIMFOLD_SINGLE_NEURON = SIMFOLD + "single_neuron/one_distal_mult_prox/"
+PLOTSFOLD_SINGLE_NEURON = PLOTSFOLD + "single_neuron/one_distal_mult_prox/"
 
 figdim = (5.,2.5)
 
-w_prox_rec = np.load(simfold + "w_prox.npy")
+w_prox_rec = np.load(SIMFOLD_SINGLE_NEURON + "w_prox.npy")
 
 fig_w_prox, ax_w_prox = plt.subplots(figsize=figdim)
 
@@ -22,6 +26,6 @@ ax_w_prox.set_ylabel("$w_{p}$")
 
 plt.tight_layout()
 
-fig_w_prox.savefig(plotsfold + "w_prox." + dat_format)
+fig_w_prox.savefig(PLOTSFOLD_SINGLE_NEURON + "w_prox." + DAT_FORMAT)
 
 plt.show()

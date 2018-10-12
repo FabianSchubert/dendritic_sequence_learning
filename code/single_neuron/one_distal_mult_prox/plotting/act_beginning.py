@@ -3,7 +3,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
-from plot_settings import *
+
+from dendritic_sequence_learn.plot_settings import *
+from dendritic_sequence_learn.general_settings import SIMFOLD, PLOTSFOLD
+SIMFOLD_SINGLE_NEURON = SIMFOLD + "single_neuron/one_distal_mult_prox/"
+PLOTSFOLD_SINGLE_NEURON = PLOTSFOLD + "single_neuron/one_distal_mult_prox/"
 
 def sigm(x):
 	#return np.tanh(x/2.)
@@ -13,10 +17,10 @@ def act_pd(p,d,alpha,gain):
 
 	return (sigm(gain*d) + alpha*sigm(gain*p)*sigm(-gain*d))*2.-1.
 
-I_p_rec = np.load(simfold + "I_p.npy")
-I_d_rec = np.load(simfold + "I_d.npy")
+I_p_rec = np.load(SIMFOLD_SINGLE_NEURON + "I_p.npy")
+I_d_rec = np.load(SIMFOLD_SINGLE_NEURON + "I_d.npy")
 
-with open(simfold + "params.p","rb") as reader:
+with open(SIMFOLD_SINGLE_NEURON + "params.p","rb") as reader:
 	params = pickle.load(reader)
 
 alpha_pd = params['alpha_pd']
@@ -44,6 +48,6 @@ ax_act_pd_beginning.set_title("First " + str(int(100.*t_wind/n_t_learn))+"% of l
 
 plt.tight_layout()
 
-fig_act_pd_beginning.savefig(plotsfold + "act_pd_beginning." + dat_format)
+fig_act_pd_beginning.savefig(PLOTSFOLD_SINGLE_NEURON + "act_pd_beginning." + DAT_FORMAT)
 
 plt.show()

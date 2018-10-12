@@ -8,8 +8,10 @@ import pickle
 
 import pdb
 
+from dendritic_sequence_learn.general_settings import ROOT, SIMFOLD
+SAVE_PATH = SIMFOLD + "single_neuron/one_distal_mult_prox/"
 
-path_rel = "../../../../sim_data/single_neuron/one_distal_mult_prox/"
+#path_rel = "../../../../sim_data/single_neuron/one_distal_mult_prox/"
 
 def sigm(x):
 	#return np.tanh(x/2.)
@@ -70,19 +72,9 @@ def main(n_t_learn = 500000, X_p = np.random.normal(0.,1.,(1000000,10)), X_d = n
 
 	gamma = (1.-alpha_pd/2.)*alpha_pd*gain_pd/4.
 
-	'''
 	# Calc covariance matrices
 	C_xx = np.cov(X_p.T)
-	C_xd = np.cov(X_p.T,X_d)[-1,:-1]
-
-	C_xxd = np.ndarray((n_prox,n_prox))
-
-	for i in range(n_prox):
-		for j in range(n_prox):
-			
-			C_xxd[i,j] = ((X_d - X_d.mean())*(X_p[:,i] - X_p[:,i].mean())*(X_p[:,j] - X_p[:,j].mean())).mean()
-
-	'''
+	C_xd = np.cov(X_p.T,X_d.T)[-1,:-1]
 
 	th_p = 0.
 	th_d = 0.
@@ -157,21 +149,21 @@ def main(n_t_learn = 500000, X_p = np.random.normal(0.,1.,(1000000,10)), X_d = n
 		##
 
 
-		'''
+		
 		## plasticity-analytic
-		w_prox_analytic += mu_learn * (alpha_pd*np.dot(C_xx,w_prox_analytic) + (2.-alpha_pd)*C_xd + gamma*np.dot(C_xxd,w_prox_analytic)) * gain_pd/8.
+		w_prox_analytic += mu_learn * ( alpha_pd*np.dot(C_xx,w_prox_analytic) + (2.-alpha_pd)*C_xd ) * gain_pd/8.
 
 		#w_prox_analytic += mu_learn * (alpha_pd*np.dot(C_xx,w_prox_analytic) + (2.-alpha_pd)*C_xd) * gain_pd/8.
 
-		w_prox_analytic_cxx_rec[t,:] = alpha_pd*np.dot(C_xx,w_prox_analytic)
-		w_prox_analytic_cxd_rec[t,:] = (2.-alpha_pd)*C_xd
-		w_prox_analytic_cxd_rec[t,:] = gamma*np.dot(C_xxd,w_prox_analytic)
+		#w_prox_analytic_cxx_rec[t,:] = alpha_pd*np.dot(C_xx,w_prox_analytic)
+		#w_prox_analytic_cxd_rec[t,:] = (2.-alpha_pd)*C_xd
+		#w_prox_analytic_cxd_rec[t,:] = gamma*np.dot(C_xxd,w_prox_analytic)
 
 		w_prox_analytic = np.maximum(w_prox_min,w_prox_analytic)
 		w_prox_analytic = np.minimum(w_prox_max,w_prox_analytic)
 		w_prox_analytic = w_prox_total * w_prox_analytic/w_prox_analytic.sum()
 		##
-		'''
+		
 
 		x_rec[t] = x
 		x_mean_rec[t] = x_mean
@@ -192,23 +184,24 @@ def main(n_t_learn = 500000, X_p = np.random.normal(0.,1.,(1000000,10)), X_d = n
 
 	if __name__ == "__main__":
 		
-		np.save(path_rel + "X_p.npy",X_p)
-		np.save(path_rel + "X_d.npy",X_d)
+		np.save(SAVE_PATH + "X_p.npy",X_p)
+		np.save(SAVE_PATH + "X_d.npy",X_d)
 
-		np.save(path_rel + "X_p_mean.npy",X_p_mean_rec)
-		np.save(path_rel + "X_d_mean.npy",X_d_mean_rec)
+		np.save(SAVE_PATH + "X_p_mean.npy",X_p_mean_rec)
+		np.save(SAVE_PATH + "X_d_mean.npy",X_d_mean_rec)
 
-		np.save(path_rel + "x.npy",x_rec)
-		np.save(path_rel + "x_mean.npy",x_mean_rec)
+		np.save(SAVE_PATH + "x.npy",x_rec)
+		np.save(SAVE_PATH + "x_mean.npy",x_mean_rec)
 
-		np.save(path_rel + "w_prox.npy",w_prox_rec)
-		np.save(path_rel + "w_dist.npy",w_dist_rec)
+		np.save(SAVE_PATH + "w_prox.npy",w_prox_rec)
+		np.save(SAVE_PATH + "w_dist.npy",w_dist_rec)
+		np.save(SAVE_PATH + "w_prox_analytic",w_prox_analytic_rec)
 
-		np.save(path_rel + "I_p.npy",I_p_rec)
-		np.save(path_rel + "I_d.npy",I_d_rec)
+		np.save(SAVE_PATH + "I_p.npy",I_p_rec)
+		np.save(SAVE_PATH + "I_d.npy",I_d_rec)
 
-		np.save(path_rel + "th_p.npy",th_p_rec)
-		np.save(path_rel + "th_d.npy",th_d_rec)
+		np.save(SAVE_PATH + "th_p.npy",th_p_rec)
+		np.save(SAVE_PATH + "th_d.npy",th_d_rec)
 
 		params = {	'n_t_learn':n_t_learn,
 					'alpha_pd':alpha_pd,
@@ -219,10 +212,10 @@ def main(n_t_learn = 500000, X_p = np.random.normal(0.,1.,(1000000,10)), X_d = n
 					'mu_learn':mu_learn,
 					'mu_hom':mu_hom,
 					'mu_avg':mu_avg}
-		with open(path_rel + "params.p","wb") as writer:
+		with open(SAVE_PATH + "params.p","wb") as writer:
 			pickle.dump(params,writer)
 
-		pdb.set_trace()
+		#pdb.set_trace()
 
 
 if __name__ == "__main__":
@@ -238,11 +231,11 @@ if __name__ == "__main__":
 	np.save(path_rel + "rand_chaotic_sequ.npy",X_rand_sequ)
 	'''	
 
-	X_p_sequ = np.load(path_rel + "../rand_chaotic_sequ.npy")[:,:10]
+	X_p_sequ = np.load(SIMFOLD + "single_neuron/rand_chaotic_sequ.npy")[:,:10]
 
 	#X_d_sequ = np.ndarray((2000000,10))
 
-	X_d_sequ = np.array([np.load(path_rel + "../rand_chaotic_sequ.npy")[:,0]]).T
+	X_d_sequ = np.array([np.load(SIMFOLD + "single_neuron/rand_chaotic_sequ.npy")[:,0]]).T
 
 	#X_d_sequ[:,:2] *= 2.
 	#X_d_sequ[:,1] = X_d_sequ[:,0]*0.9 +  X_d_sequ[:,1]*0.1

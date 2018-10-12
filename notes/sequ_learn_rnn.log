@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.29)  11 OCT 2018 16:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.29)  12 OCT 2018 10:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -681,7 +681,7 @@ File: ./figures/weights_analytic_comp.png Graphic file (type png)
 <use ./figures/weights_analytic_comp.png>
 Package pdftex.def Info: ./figures/weights_analytic_comp.png used on input line
  210.
-(pdftex.def)             Requested size: 258.91895pt x 129.46007pt.
+(pdftex.def)             Requested size: 295.90979pt x 147.95595pt.
 
 <./figures/weights_full_sim_comp.png, id=51, 361.35pt x 180.675pt>
 File: ./figures/weights_full_sim_comp.png Graphic file (type png)
@@ -689,48 +689,49 @@ File: ./figures/weights_full_sim_comp.png Graphic file (type png)
 <use ./figures/weights_full_sim_comp.png>
 Package pdftex.def Info: ./figures/weights_full_sim_comp.png used on input line
  211.
-(pdftex.def)             Requested size: 258.91895pt x 129.46007pt.
+(pdftex.def)             Requested size: 295.90979pt x 147.95595pt.
  [8 <./figures/weights_analytic_comp.png> <./figures/weights_full_sim_comp.png>
 ]
-<./figures/dist_plast_comp.png, id=58, 369.0588pt x 387.849pt>
+<./figures/dist_plast_comp.png, id=57, 369.0588pt x 387.849pt>
 File: ./figures/dist_plast_comp.png Graphic file (type png)
 
 <use ./figures/dist_plast_comp.png>
 Package pdftex.def Info: ./figures/dist_plast_comp.png used on input line 228.
 (pdftex.def)             Requested size: 369.88583pt x 388.74167pt.
- [9 <./figures/dist_plast_comp.png>]
-<./figures/prox_dist_rnn_illustration.png, id=62, 195.8517pt x 157.3077pt>
+
+<./figures/prox_dist_rnn_illustration.png, id=58, 195.8517pt x 157.3077pt>
 File: ./figures/prox_dist_rnn_illustration.png Graphic file (type png)
 
 <use ./figures/prox_dist_rnn_illustration.png>
 Package pdftex.def Info: ./figures/prox_dist_rnn_illustration.png used on input
- line 248.
+ line 242.
 (pdftex.def)             Requested size: 184.94292pt x 148.55092pt.
- [10 <./figures/prox_dist_rnn_illustration.png>]
-<./figures/echo_state_network_pd_act_grad_desc.png, id=67, 311.2428pt x 448.314
+
+<./figures/echo_state_network_pd_act_grad_desc.png, id=59, 311.2428pt x 448.314
 9pt>
 File: ./figures/echo_state_network_pd_act_grad_desc.png Graphic file (type png)
 
  <use ./figures/echo_state_network_pd_act_grad_desc.png>
 Package pdftex.def Info: ./figures/echo_state_network_pd_act_grad_desc.png used
- on input line 263.
+ on input line 257.
 (pdftex.def)             Requested size: 369.88583pt x 532.8241pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 270.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 264.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 270.
- (./sequ_learn_rnn.bbl
-[11] [12 <./figures/echo_state_network_pd_act_grad_desc.png>]) [13]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 264.
+ [9] [10 <./figures/dist_plast_comp.png> <./figures/prox_dist_rnn_illustration.
+png>] [11 <./figures/echo_state_network_pd_act_grad_desc.png>] (./sequ_learn_rn
+n.bbl [12]) [13]
 (./sequ_learn_rnn.aux) ) 
 Here is how much of TeX's memory you used:
- 4067 strings out of 493223
- 53983 string characters out of 6142685
- 129716 words of memory out of 5000000
- 7464 multiletter control sequences out of 15000+600000
+ 4073 strings out of 493223
+ 54103 string characters out of 6142685
+ 129749 words of memory out of 5000000
+ 7470 multiletter control sequences out of 15000+600000
  14298 words of font info for 54 fonts, out of 8000000 for 9000
  1084 hyphenation exceptions out of 8191
  38i,9n,27p,1306b,229s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -748,7 +749,7 @@ e1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmti10.pfb>
-Output written on sequ_learn_rnn.pdf (13 pages, 5650949 bytes).
+Output written on sequ_learn_rnn.pdf (13 pages, 5680767 bytes).
 PDF statistics:
  124 PDF objects out of 1000 (max. 8388607)
  74 compressed objects within 1 object stream

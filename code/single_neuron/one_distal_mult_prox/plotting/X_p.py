@@ -3,11 +3,15 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
-from plot_settings import *
 
-X_p = np.load(simfold + "X_p.npy")
+from dendritic_sequence_learn.plot_settings import *
+from dendritic_sequence_learn.general_settings import SIMFOLD, PLOTSFOLD
+SIMFOLD_SINGLE_NEURON = SIMFOLD + "single_neuron/one_distal_mult_prox/"
+PLOTSFOLD_SINGLE_NEURON = PLOTSFOLD + "single_neuron/one_distal_mult_prox/"
 
-with open(simfold + "params.p","rb") as reader:
+X_p = np.load(SIMFOLD_SINGLE_NEURON + "X_p.npy")
+
+with open(SIMFOLD_SINGLE_NEURON + "params.p","rb") as reader:
 	params = pickle.load(reader)
 
 n_t_learn = params['n_t_learn']
@@ -23,6 +27,6 @@ ax_X_p.set_ylabel("$x_{p}$")
 
 plt.tight_layout()
 
-fig_X_p.savefig(plotsfold + "X_p." + dat_format)
+fig_X_p.savefig(PLOTSFOLD_SINGLE_NEURON + "X_p." + DAT_FORMAT)
 
 plt.show()
