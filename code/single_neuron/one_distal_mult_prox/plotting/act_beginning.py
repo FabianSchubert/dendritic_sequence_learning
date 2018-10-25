@@ -29,7 +29,7 @@ n_t_learn = params['n_t_learn']
 
 figdim = (5.,5.)
 
-fig_act_pd_beginning, ax_act_pd_beginning = plt.subplots(1,1,figsize=figdim)
+fig_act_pd_beginning, ax_act_pd_beginning = plt.subplots(1, 1, figsize = figdim)
 i_p = np.linspace(-1.,1.,400)
 i_d = np.linspace(-1.,1.,400)
 Ip,Id = np.meshgrid(i_p,i_d)
