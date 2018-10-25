@@ -14,4 +14,4 @@ setup(	name='dendritic_sequence_learn',
       	],
 		zip_safe=False	)
 
-with open()
+
