@@ -1,0 +1,89 @@
+\begin{thebibliography}{10}
+
+\bibitem{Shai_2015}
+A.~S. Shai, C.~A. Anastassiou, M.~E. Larkum, and C.~Koch.
+\newblock {Physiology of Layer 5 Pyramidal Neurons in Mouse Primary Visual
+  Cortex: Coincidence Detection through Bursting}.
+\newblock {\em PLOS Computational Biology}, 11(3), 2015.
+
+\bibitem{Urbanczik_2014}
+R.~Urbanczik and W.~Senn.
+\newblock {Learning by the Dendritic Prediction of Somatic Spiking}.
+\newblock {\em Neuron}, 81(3):521--528, feb 2014.
+
+\bibitem{Barbas_2015}
+H.~Barbas.
+\newblock {General Cortical and Special Prefrontal Connections: Principles from
+  Structure to Function}.
+\newblock {\em Annual Review of Neuroscience}, 38(1):269--289, jul 2015.
+
+\bibitem{Larkum_2018}
+Matthew~E. Larkum, Lucy~S. Petro, Robert N.~S. Sachdev, and Lars Muckli.
+\newblock A perspective on cortical layering and layer-spanning neuronal
+  elements.
+\newblock {\em Frontiers in Neuroanatomy}, 12:56, 2018.
+
+\bibitem{Bastos_2012}
+Andre~M. Bastos, W.~Martin Usrey, Rick~A. Adams, George~R. Mangun, Pascal
+  Fries, and Karl~J. Friston.
+\newblock Canonical microcircuits for predictive coding.
+\newblock {\em Neuron}, 76(4):695--711, Nov 2012.
+
+\bibitem{Meyer_2011}
+Hanno~S. Meyer, Daniel Schwarz, Verena~C. Wimmer, Arno~C. Schmitt, Jason N.~D.
+  Kerr, Bert Sakmann, and Moritz Helmstaedter.
+\newblock Inhibitory interneurons in a cortical column form hot zones of
+  inhibition in layers 2 and 5a.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  108(40):16807--16812, 2011.
+
+\bibitem{Sjoestroem_2006}
+P.~J. Sj\"oström and M.~H\"ausser.
+\newblock {A Cooperative Switch Determines the Sign of Synaptic Plasticity in
+  Distal Dendrites of Neocortical Pyramidal Neurons}.
+\newblock {\em Neuron}, 51(2):227--238, jul 2006.
+
+\bibitem{Letzkus_2006}
+Johannes~J. Letzkus, Bj{\"o}rn~M. Kampa, and Greg~J. Stuart.
+\newblock {Learning Rules for Spike Timing-Dependent Plasticity Depend on
+  Dendritic Synapse Location}.
+\newblock {\em Journal of Neuroscience}, 26(41):10420--10429, 2006.
+
+\bibitem{Gambino_2014}
+Fr{\'e}d{\'e}ric Gambino, St{\'e}phane Pag{\`e}s, Vassilis Kehayas, Daniela
+  Baptista, Roberta Tatti, Alan Carleton, and Anthony Holtmaat.
+\newblock Sensory-evoked ltp driven by dendritic plateau potentials in vivo.
+\newblock {\em Nature}, 515(7525):116--119, Nov 2014.
+
+\bibitem{Williams_2010}
+Paul~L. Williams and Randall~D. Beer.
+\newblock Nonnegative decomposition of multivariate information.
+\newblock {\em CoRR}, abs/1004.2515, 2010.
+
+\bibitem{Wibral_2017}
+Michael Wibral, Viola Priesemann, Jim~W. Kay, Joseph~T. Lizier, and William~A.
+  Phillips.
+\newblock Partial information decomposition as a unified approach to the
+  specification of neural goal functions.
+\newblock {\em Brain and Cognition}, 112:25 -- 38, 2017.
+\newblock Perspectives on Human Probabilistic Inferences and the 'Bayesian
+  Brain'.
+
+\bibitem{Kay_2019}
+Jim~W. Kay, W.~A. Phillips, Jaan Aru, Bruce~P. Graham, and Matthew~E. Larkum.
+\newblock Bayesian modeling of bac firing as a mechanism for apical
+  amplification in neocortical pyramidal neurons.
+\newblock {\em bioRxiv}, 2019.
+
+\bibitem{McGill_1954}
+William~J. McGill.
+\newblock Multivariate information transmission.
+\newblock {\em Psychometrika}, 19(2):97--116, Jun 1954.
+
+\bibitem{Moldwin_2020}
+Toviah Moldwin and Idan Segev.
+\newblock Perceptron learning and classification in a modeled cortical
+  pyramidal cell.
+\newblock {\em Frontiers in Computational Neuroscience}, 14:33, 2020.
+
+\end{thebibliography}

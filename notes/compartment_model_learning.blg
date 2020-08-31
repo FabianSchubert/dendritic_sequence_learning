@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: compartment_model_learning.aux
+The style file: unsrt.bst
+Database file #1: /home/fabian/work/lit_base.bib
+You've used 14 entries,
+            1791 wiz_defined-function locations,
+            561 strings with 6589 characters,
+and the built_in function-call counts, 3318 in all, are:
+= -- 279
+> -- 179
+< -- 0
++ -- 65
+- -- 51
+* -- 279
+:= -- 563
+add.period$ -- 43
+call.type$ -- 14
+change.case$ -- 14
+chr.to.int$ -- 0
+cite$ -- 14
+duplicate$ -- 123
+empty$ -- 302
+format.name$ -- 51
+if$ -- 703
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 14
+newline$ -- 74
+num.names$ -- 14
+pop$ -- 15
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 47
+stack$ -- 0
+substring$ -- 242
+swap$ -- 14
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 30
+width$ -- 16
+write$ -- 157

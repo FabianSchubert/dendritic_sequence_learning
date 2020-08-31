@@ -1,49 +1,49 @@
-This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: sequ_learn_rnn.aux
 The style file: unsrt.bst
-Database file #1: /home/fschubert/work/lit_base.bib.bib
+Database file #1: /home/fabian/work/lit_base.bib
+Warning--I didn't find a database entry for "Jaeger_2010"
 Warning--empty booktitle in Rumelhart_1988
-Warning--empty booktitle in Jaeger_2010
-You've used 12 entries,
+You've used 20 entries,
             1791 wiz_defined-function locations,
-            537 strings with 5674 characters,
-and the built_in function-call counts, 2589 in all, are:
-= -- 232
-> -- 98
+            609 strings with 7683 characters,
+and the built_in function-call counts, 4683 in all, are:
+= -- 403
+> -- 235
 < -- 2
-+ -- 38
-- -- 26
-* -- 176
-:= -- 420
-add.period$ -- 38
-call.type$ -- 12
-change.case$ -- 12
++ -- 86
+- -- 66
+* -- 367
+:= -- 779
+add.period$ -- 63
+call.type$ -- 20
+change.case$ -- 20
 chr.to.int$ -- 0
-cite$ -- 14
-duplicate$ -- 123
-empty$ -- 266
-format.name$ -- 26
-if$ -- 573
+cite$ -- 21
+duplicate$ -- 191
+empty$ -- 439
+format.name$ -- 66
+if$ -- 1014
 int.to.chr$ -- 0
-int.to.str$ -- 12
-missing$ -- 12
-newline$ -- 63
-num.names$ -- 14
-pop$ -- 33
+int.to.str$ -- 20
+missing$ -- 20
+newline$ -- 104
+num.names$ -- 22
+pop$ -- 35
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 49
+skip$ -- 76
 stack$ -- 0
-substring$ -- 153
-swap$ -- 21
+substring$ -- 314
+swap$ -- 29
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 2
-while$ -- 25
-width$ -- 14
-write$ -- 132
+warning$ -- 1
+while$ -- 42
+width$ -- 22
+write$ -- 223
 (There were 2 warnings)

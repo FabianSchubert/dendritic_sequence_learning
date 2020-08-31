@@ -47,7 +47,22 @@ def synnorm(w,w_total):
 
 
 
-def main(n_t_learn = 500000, X_p = np.random.normal(0.,1.,(1000000,10)), X_d = np.random.normal(0.,1.,(1000000,1)), alpha_pd = 0.25, gain_pd = 20., gain_d_sign_inv = 1., w_dist = 1., w_prox_total = 1., w_prox_max = 1., w_prox_min = 0.0001, w_dist_total = 1., w_dist_max = 1., w_dist_min = 0.0001, mu_learn = 0.00005, mu_hom = 0.00002,  mu_avg = 0.00002):
+def main(n_t_learn = 500000, 
+	X_p = np.random.normal(0.,1.,(1000000,10)), 
+	X_d = np.random.normal(0.,1.,(1000000,1)), 
+	alpha_pd = 0.25, 
+	gain_pd = 20., 
+	gain_d_sign_inv = 1., 
+	w_dist = 1., 
+	w_prox_total = 1., 
+	w_prox_max = 1., 
+	w_prox_min = 0.0001, 
+	w_dist_total = 1., 
+	w_dist_max = 1., 
+	w_dist_min = 0.0001, 
+	mu_learn = 0.00005, 
+	mu_hom = 0.00002,  
+	mu_avg = 0.00002):
 	
 	n_prox = X_p.shape[1]
 	n_dist = X_d.shape[1]
@@ -228,14 +243,14 @@ if __name__ == "__main__":
 		X_rand_sequ[:,k] = gen_rand_sequ(500,2000000*0.1,0.1,1,2.)[:,0]
 
 	
-	np.save(path_rel + "rand_chaotic_sequ.npy",X_rand_sequ)
+	np.save(SAVE_PATH + "rand_chaotic_sequ.npy",X_rand_sequ)
 	'''	
 
-	X_p_sequ = np.load(SIMFOLD + "single_neuron/rand_chaotic_sequ.npy")[:,:10]
+	X_p_sequ = np.load(SAVE_PATH + "rand_chaotic_sequ.npy")[:,:10]
 
 	#X_d_sequ = np.ndarray((2000000,10))
 
-	X_d_sequ = np.array([np.load(SIMFOLD + "single_neuron/rand_chaotic_sequ.npy")[:,0]]).T
+	X_d_sequ = np.array([np.load(SAVE_PATH + "rand_chaotic_sequ.npy")[:,0]]).T
 
 	#X_d_sequ[:,:2] *= 2.
 	#X_d_sequ[:,1] = X_d_sequ[:,0]*0.9 +  X_d_sequ[:,1]*0.1
