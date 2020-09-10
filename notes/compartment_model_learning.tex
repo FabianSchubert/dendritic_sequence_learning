@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper,draft]{article}
+\documentclass[10pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsmath}
@@ -326,81 +326,118 @@ However, maximizing covariance is not necessarily the same as maximizing correla
 %%\item Is this a good architecture for generalization/multiple layers? Where do feed forward connections go in?
 %%\end{itemize}
 
-
-\subsection{Comparison to a Two-Compartment Model with Error Minimization}
-In a publication by Urbanczik and Senn, somatic and dendritic interaction takes place in a two-compartment approach, where both compartments are modeled as passive capacitors \cite{Urbanczik_2014}. Somatic spiking is modeled as a Poisson process with a rate given by the sigmoid function of the somatic voltage. In contrast to our model, dendritic plasticity is then driven by an error term between somatic spiking activity and the activity that would be present in the soma if only dendritic input was present. This allows single neurons to precisely learn a teaching signal. Furthermore, it was shown that such a learning algorithm allows the formation of associative memory in a recurrent network, as well as the emergence of feed-forward topographic maps (onto the dendritic compartment). The authors claim that using the two-compartment model justifies the use of an error driven plasticity rule. While it is reasonable that compartments could temporally store two different values---voltages in this case---which are to be compared, it is not obvious how such a comparison might be implemented. In particular, the rule proposed in the paper contains some hypothetical somatic activity, derived from the dendritic voltage, whose biological origin remains unclear.
-
-
-
-%\subsection{Interpretation of the Results}
-%
-%As a minimal interpretation of the observed effects, we denote that our activation function gives distal inputs a stronger influence on postsynaptic activity than somatic input. In fact, if both proximal and distal weights obey the same learning principle, the linearized plasticity rule \eqref{eq:approx_delta_w} reduces to a simple Hebbian covariance learning rule, where proximal inputs are pre-amplified by a factor $\alpha$ and distal inputs by a factor $2-\alpha$. As such, learning still convergences to the principle component of the rescaled inputs.
-%
-%Even though this reduction of the learning process to the linearized case might let the presented results appear ``trivial", the advantage of the full nonlinear activation function becomes apparent in the absence of distal inputs: non-zero postsynaptic activity can be achieved with much less somatic input than what one would expect in the linear/point neuron case.
-
-\subsection{Physiological Basis of the Architecture}
-\begin{itemize}
-	\item Feedback connections project from L5 to L1/2 \cite{Barbas_2015}. However, there is no evidence that feedback connections terminate \emph{exclusively} at the apical parts of L5 neurons \cite{Larkum_2018}. Therefore, the functioning or mode of operation of these feedback connections might change depending on their termination site.
-	\item In the predictive coding scheme, feedback connections are actually assumed to be mostly inhibitory \cite{Bastos_2012}. The common picture is that predictive feedback tries to eliminate or cancel out input from feed-forward or later connections. A possible explanatory mechanism could be via inhibitory interneurons \cite{Meyer_2011}.
-	\item Feed-forward connections project from L4/5 to L5 \cite{Barbas_2015}
-\end{itemize}
-
-\subsubsection{What is the Right Plasticity Rule for Distal Synapses?}
-While a simple Hebbian rule is a plausible candidate for proximal plasticity, experimental studies suggest that distal synapses can actually undergo LTP or LTD, depending on the mode of neural firing \cite{Sjoestroem_2006,Letzkus_2006}: So-called backpropagation-activated calcium spikes (BACs), which appear as bursts of action potentials, can be elicited when both basal and apical excitatory input is present. In this case, LTP (i.e. regular Hebbian-like) plasticity can be observed in the apical synapses. However, in the absence of this firing mode, apical synapses tend to undergo LTD, which could be described as a form of anti-Hebbian plasticity. Fig.~\ref{fig:ltp_switch} illustrates that the amount of somatic depolarization can determine the sign of synaptic weight changes in distal compartments.
-
-On the other hand, under some conditions, LTP can occur even in the absence of somatic spiking \cite{Gambino_2014}, and this effect appears to be linked with long-lasting NMDA depolarizations.
-
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{./figures/sjoestroem_haeusser_plast_switch.jpg}
-\caption{From Sjöström and Häusser \cite{Sjoestroem_2006}: Somatic depolarization determines whether distal synapses undergo LTD or LTP upon stimulation.}
-\label{fig:ltp_switch}
-\end{figure}
-
-\subsection{Apical and Basal Compartments from an Information Theoretic Perspective}
-\subsubsection{Partial Information Decompositon}
-Recently, an information theoretic approach to characterizing multiple input channels called partial information decomposition (PID, see \cite{Williams_2010}) has been proposed as a framework for the understanding of the interplay between basal and apical inputs and its effects on information processing \cite{Wibral_2017}. In particular, Kay and Philips \cite{Kay_2019} analyzed the model proposed by Shai et al. \cite{Shai_2015} using PID. Roughly speaking, PID decomposes the total mutual information between neural input and output into three types of information: redundant, unique and synergistic information. In the case of a separation into apical and basal inputs, this would allow splitting the total information into a part that is provided by both input channels, unique information that is only provided by either apical or basal input, and information that is retrieved by means of the interaction between both input channels. Kay and Philips found that in the rate model by Shai et al., apical inputs provide very little unique information, but a a lot of synergistic information is present. Taken together, this is interpreted as apical input acting mostly ``modulatory"`rather than driving onto the neural output.
-
-\subsubsection{Interaction Information}
-Interaction information is an extension of mutual information to more than two variables \cite{McGill_1954}. For three random variables, the interaction information $I(X;Y;Z)$ is given by
-%%%%%%%%%%%%
-\begin{align}
-I(X;Y;Z) &= I(X;Y) - I(X;Y|Z) \\
-		&= I(X;Z) - I(X;Z|Y) \\
-		&= I(Y;Z) - I(Y;Z|X)
-\end{align}
-%%%%%%%%%%%%
-where e.g. $I(X ; Y)$ is the mutual information between $X$ and $Y$ and $I(X;Y|Z)$ is the conditional mutual information. The Latter is simply the expected value over $Z$ of the mutual information between the conditional probability distribution $P(X,Y|Z)$. Interpreting the given definition, interaction information quantifies if the knowledge of a third variable increases or decreases (on average) the mutual information between two other variables. Note that this quantity is not strictly positive. A positive sign of $I(X;Y;Z)$ indicates that $Z$ accounts for some of the correlation between $X$ and $Y$. This is a rather common case, e.g. if $X$ can be partly explained by $Z$. An example for negative interaction information would be a logical XOR gate $Z={\rm XOR}(X,Y)$, given that $X$ and $Y$ are independent binary variables. In this case, knowledge about the input $Y$ increases the mutual information between the input $X$ and the output $Z$.
-
-Interaction information can also be used to write the mutual information $I(Z;X,Y)$ between some hypothetical output function $Z=Z(X,Y)$ and a pair of input channels $X,Y$ as
-%%%%%%%%%%%
+\subsection{Effect of ``Distraction" Components in the Proximal Input}
+As already seen previously, using a compartment model forces proximal inputs to a configuration that aligns with the presented distal input, even if the proximal input has a direction of larger variance that does not align with the weight configuration that matches the distal input. We wanted to further quantify this effect systematically. To do so, we devised the following setup: A random sequence for the distal input was generated using the construction given by \eqref{eq:single_neur_1}, that is, a random linear combination of the sequences also presented to the proximal input. However, the proximal input was also subject to a distracting scaling operation perpendicular to the vector $\mathbf{a}$ that defined the linear combination for the distal input. Since the number of proximal input $N_p$ was larger than $2$, this was done by picking a random unit vector in the hyperplane that is orthogonal to $\mathbf{a}$ and then stretching the $N_p$-dimensional input by a factor $s$ along this direction. Therefore, this procedure simulated a ``worst-case scenario" where the proximal input has its greatest variance in a direction perfectly orthogonal to the desired alignment of the weights. For a given scaling factor $s$, we generated multiple trials of this simulation and then calculated the resulting normalized mean squared error
 \begin{equation}
-	I(Z;X,Y) = I(X;Z) + I(Y;Z) - I(X;Y;Z) \; .
+	MSE = \frac{\left\langle \left\lvert \mathbf{a} - \mathbf{w}^{\rm p} \right\rvert^2\right\rangle}{\left\langle \left\lvert \mathbf{a}\right\rvert^2\right\rangle} \; .
 \end{equation}
-%%%%%%%%%%%
-That means, if interaction information is negative, more information about $Z$ is conveyed via $X,Y$ taken together than the sum of their individual information content about $Z$. In this scenario, $X,Y$ jointly provide some cooperative information that can not be retrieved by inspecting $X$ and $Y$ individually, in accordance with the interpretation of negative interaction information given above. In the other case, where interaction information is positive, the actual information provided by $X,Y$ is less than their individual information content. This could, for example indicate some form of redundancy, which, again is in accordance to the interpretation of positive interaction information previously given.
+This was done over a range of values of $s$. The results are shown in Fig.~\ref{fig:distraction_scaling}. The compartment model preserves a much better alignment for larger values of $s$, with practically zero error up to a factor of approximately $2.5$.
 
-
-\section{Possible Future Work}
-\begin{itemize}
-	\item As explained, plasticity in distal synapses does not follow a simple Hebbian learning scheme. Rather, experimental evidence suggests that the amount of somatic depolarization can change the sign of plasticity in distal synapses. Therefore, it might be worthwhile investigating the plasticity dynamics of a simple learning rule that incorporates these findings. Actually, if we combine a simple Hebbian learning rule $y_{\rm pre} \cdot y_{\rm post}$ with a multiplicative factor $(y_{\rm post}-\theta)$ that changes sign depending on postsynaptic activity, we essentially get a BCM-like rule:
-	\begin{equation}
-		\Delta w_{ij} \propto y_j y_i (y_i - \theta) \; .
-	\end{equation}
-	Such a type of learning rule has been studied extensively, however, has not been combined with a basal-distal compartment model.
-	
-	An alternative view on plasticity in distal dendrites would be to consider it a distinct synaptic integration zone. From this perspective, one could propose a Hebbian learning rule in which the postsynaptic term is just a function of the local sum of postsynaptic potentials. Similar to what we already found in Sect.~\ref{sect:dist_plast}, one would expect such a learning rule to align weights to the PC of all distal inputs.
-	
-	\item Interaction information is a relatively simple quantity that provides some insight into how two (or more) variables are linked with respect to their effect on a third variable. Fore example, in Fig.~\ref{fig:interact_inf}, this measure was numerically calculated for different input statistics of the two-compartment firing rate model given in \eqref{eq:simpl_prox_dist}. Interestingly, increasing the correlation between proximal and distal inputs reverses the direction of the gradient in the space of proximal and distal input variances. However, this should just serve as an exemplary calculation, and it remains to be discussed whether this measure could provide insight e.g. into how such non-linear compartment model differs in its information processing to a simple point neuron model. Furthermore, one could investigate the effects of plasticity onto this quantity.
-	\item Moldwin and Segev \cite{Moldwin_2020}: Perceptron learning in a biophysical compartment model.$\rightarrow$ maybe test these capabilities in our model?
-\end{itemize}
 \begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{./figures/interaction_info_comp_mod.png}
-	\caption{Interaction information between and proximal input, distal input and the resulting firing rate of the compartment model given by \eqref{eq:simpl_prox_dist}. Inputs are Gaussian random variables with mean values of $0.5$ and standard deviations $\sigma_{\rm P}$ and $\sigma_{\rm D}$ respectively, and a correlation given by $\rho$.}
-	\label{fig:interact_inf}
+	\includegraphics[width=\textwidth]{./figures/distraction_scaling.pdf}
+	\caption{Normalized mean squared error between $\mathbf{w}^{\rm p}$ and vector $\mathbf{a}$ defining the linear combination of signals presented to the distal input for a given distraction scaling $s$.}
+	\label{fig:distraction_scaling}
 \end{figure}
+
+\subsection{Pattern Classification Task}
+
+We wanted to test the ability of our compartment model to learn to binary classify proximal input patterns. During the learning phase, activity patterns of dimension $500$ were presented to the proximal input while a single distal input encoded the binary classification of these patterns. Before actually simulating the learning, $P$ patterns were generated by randomly setting $10\%$ of the proximal inputs to $1$, leaving the rest at $0$. We randomly assigned each of those patterns to either of the two classes with equal chance (after checking that all random patterns were unique). The actual training sequence was then generated by repeatedly drawing samples from this predefined set of patterns and presenting them to the proximal input, as well as the feeding the respective $0/1$ activity encoding the binary classification into to the distal input. We tested this procedure both with the compartment model as well as a simple point neuron where $y(I_{\rm p},I_{\rm d}) = \sigma(I_{\rm p}+I_{\rm d} - \theta)$, with $\theta = 1$. Furthermore, we gradually increased the size of the set of patterns $P$. To test the actual classification performance, another random sequence from the pattern set was generated, however, this time switching off the distal input. A pattern was then classified as class $1$ if the activity exceeded $\alpha/2$, that is, half of the maximally achievable activity in the absence of distal input. The resulting accuracy shown in Fig.~\ref{fig:class_accuracy} was estimated by the fraction of correctly classified input patterns. Apparently, a point neuron can achieve similar accuracy levels under the given experimental setup. It should be noted though that both models fall short to a perceptron model with a simple perceptron learning rule, which essentially represents the upper accuracy limit for this linear classification task. One reason why the two other models performed worse could be due to the enforced positivity of the weights, which was done for reasons of biological plausibility. Removing this constraint indeed resulted in better performance in the compartment and point model, as as shown in Fig.~\ref{fig:class_accuracy_no_constraint}. However, substantial differences between these two models could still not be observed.
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{./figures/accuracy_pattern_number.pdf}
+	\caption{Binary classification accuracy for different amounts of training patterns and different neuron models.}
+	\label{fig:class_accuracy}
+\end{figure}
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{./figures/accuracy_pattern_number_no_constraint.pdf}
+	\caption{Binary classification accuracy for different amounts of training patterns and different neuron models. Same setup as in Fig.~\ref{fig:class_accuracy}, but allowing for negative weights in the point and compartment model}
+	\label{fig:class_accuracy_no_constraint}
+\end{figure}
+
+Another issue not yet addressed is the fact that biases were adjusted to fit the average appearance of the two classes, that is, with equal probabilities. If we change this so that e.g. class $0$ has a $90\%$ chance of being present, we should expect lower performance under the same set of parameters. This case actually corresponds to a more realistic scenario where cells are sensitive to a more specific set of patterns, thus being activated more sparsely. The results are shown in Fig.~\ref{fig:class_accuracy_imbalance}. As expected, Hebbian learning of the weights can not account for this imbalance, whereas perceptron learning is unaffected. Of course, one could easily fix this by simply introducing some homeostatic mechanisms that adjusts the average activity to fit a given prior probability of finding the patterns that the neuron is supposed to react to. However, this is a ad-hoc solution rather than a biological explanation, except if we argue that there is ac certain heterogeneity among average neural activities and that eventually, neurons will develop receptive fields for patterns whose prior probabilities fit the neurons'` given average activity.
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{./figures/accuracy_pattern_number_class_imbalance.pdf}
+	\caption{Binary classification accuracy for different amounts of training patterns and different neuron models. Same setup as in Fig.~\ref{fig:class_accuracy}, but with class $0$ appearing with $90\%$ probability (as opposed to a $50/50$ chance as in the previous setups).}
+	\label{fig:class_accuracy_imbalance}
+\end{figure}
+
+
+%\subsection{Comparison to a Two-Compartment Model with Error Minimization}
+%In a publication by Urbanczik and Senn, somatic and dendritic interaction takes place in a two-compartment approach, where both compartments are modeled as passive capacitors \cite{Urbanczik_2014}. Somatic spiking is modeled as a Poisson process with a rate given by the sigmoid function of the somatic voltage. In contrast to our model, dendritic plasticity is then driven by an error term between somatic spiking activity and the activity that would be present in the soma if only dendritic input was present. This allows single neurons to precisely learn a teaching signal. Furthermore, it was shown that such a learning algorithm allows the formation of associative memory in a recurrent network, as well as the emergence of feed-forward topographic maps (onto the dendritic compartment). The authors claim that using the two-compartment model justifies the use of an error driven plasticity rule. While it is reasonable that compartments could temporally store two different values---voltages in this case---which are to be compared, it is not obvious how such a comparison might be implemented. In particular, the rule proposed in the paper contains some hypothetical somatic activity, derived from the dendritic voltage, whose biological origin remains unclear.
+%
+%
+%
+%%\subsection{Interpretation of the Results}
+%%
+%%As a minimal interpretation of the observed effects, we denote that our activation function gives distal inputs a stronger influence on postsynaptic activity than somatic input. In fact, if both proximal and distal weights obey the same learning principle, the linearized plasticity rule \eqref{eq:approx_delta_w} reduces to a simple Hebbian covariance learning rule, where proximal inputs are pre-amplified by a factor $\alpha$ and distal inputs by a factor $2-\alpha$. As such, learning still convergences to the principle component of the rescaled inputs.
+%%
+%%Even though this reduction of the learning process to the linearized case might let the presented results appear ``trivial", the advantage of the full nonlinear activation function becomes apparent in the absence of distal inputs: non-zero postsynaptic activity can be achieved with much less somatic input than what one would expect in the linear/point neuron case.
+%
+%\subsection{Physiological Basis of the Architecture}
+%\begin{itemize}
+%	\item Feedback connections project from L5 to L1/2 \cite{Barbas_2015}. However, there is no evidence that feedback connections terminate \emph{exclusively} at the apical parts of L5 neurons \cite{Larkum_2018}. Therefore, the functioning or mode of operation of these feedback connections might change depending on their termination site.
+%	\item In the predictive coding scheme, feedback connections are actually assumed to be mostly inhibitory \cite{Bastos_2012}. The common picture is that predictive feedback tries to eliminate or cancel out input from feed-forward or later connections. A possible explanatory mechanism could be via inhibitory interneurons \cite{Meyer_2011}.
+%	\item Feed-forward connections project from L4/5 to L5 \cite{Barbas_2015}
+%\end{itemize}
+%
+%\subsubsection{What is the Right Plasticity Rule for Distal Synapses?}
+%While a simple Hebbian rule is a plausible candidate for proximal plasticity, experimental studies suggest that distal synapses can actually undergo LTP or LTD, depending on the mode of neural firing \cite{Sjoestroem_2006,Letzkus_2006}: So-called backpropagation-activated calcium spikes (BACs), which appear as bursts of action potentials, can be elicited when both basal and apical excitatory input is present. In this case, LTP (i.e. regular Hebbian-like) plasticity can be observed in the apical synapses. However, in the absence of this firing mode, apical synapses tend to undergo LTD, which could be described as a form of anti-Hebbian plasticity. Fig.~\ref{fig:ltp_switch} illustrates that the amount of somatic depolarization can determine the sign of synaptic weight changes in distal compartments.
+%
+%On the other hand, under some conditions, LTP can occur even in the absence of somatic spiking \cite{Gambino_2014}, and this effect appears to be linked with long-lasting NMDA depolarizations.
+%
+%
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.5\textwidth]{./figures/sjoestroem_haeusser_plast_switch.jpg}
+%\caption{From Sjöström and Häusser \cite{Sjoestroem_2006}: Somatic depolarization determines whether distal synapses undergo LTD or LTP upon stimulation.}
+%\label{fig:ltp_switch}
+%\end{figure}
+%
+%\subsection{Apical and Basal Compartments from an Information Theoretic Perspective}
+%\subsubsection{Partial Information Decompositon}
+%Recently, an information theoretic approach to characterizing multiple input channels called partial information decomposition (PID, see \cite{Williams_2010}) has been proposed as a framework for the understanding of the interplay between basal and apical inputs and its effects on information processing \cite{Wibral_2017}. In particular, Kay and Philips \cite{Kay_2019} analyzed the model proposed by Shai et al. \cite{Shai_2015} using PID. Roughly speaking, PID decomposes the total mutual information between neural input and output into three types of information: redundant, unique and synergistic information. In the case of a separation into apical and basal inputs, this would allow splitting the total information into a part that is provided by both input channels, unique information that is only provided by either apical or basal input, and information that is retrieved by means of the interaction between both input channels. Kay and Philips found that in the rate model by Shai et al., apical inputs provide very little unique information, but a a lot of synergistic information is present. Taken together, this is interpreted as apical input acting mostly ``modulatory"`rather than driving onto the neural output.
+%
+%\subsubsection{Interaction Information}
+%Interaction information is an extension of mutual information to more than two variables \cite{McGill_1954}. For three random variables, the interaction information $I(X;Y;Z)$ is given by
+%%%%%%%%%%%%%
+%\begin{align}
+%I(X;Y;Z) &= I(X;Y) - I(X;Y|Z) \\
+%		&= I(X;Z) - I(X;Z|Y) \\
+%		&= I(Y;Z) - I(Y;Z|X)
+%\end{align}
+%%%%%%%%%%%%%
+%where e.g. $I(X ; Y)$ is the mutual information between $X$ and $Y$ and $I(X;Y|Z)$ is the conditional mutual information. The Latter is simply the expected value over $Z$ of the mutual information between the conditional probability distribution $P(X,Y|Z)$. Interpreting the given definition, interaction information quantifies if the knowledge of a third variable increases or decreases (on average) the mutual information between two other variables. Note that this quantity is not strictly positive. A positive sign of $I(X;Y;Z)$ indicates that $Z$ accounts for some of the correlation between $X$ and $Y$. This is a rather common case, e.g. if $X$ can be partly explained by $Z$. An example for negative interaction information would be a logical XOR gate $Z={\rm XOR}(X,Y)$, given that $X$ and $Y$ are independent binary variables. In this case, knowledge about the input $Y$ increases the mutual information between the input $X$ and the output $Z$.
+%
+%Interaction information can also be used to write the mutual information $I(Z;X,Y)$ between some hypothetical output function $Z=Z(X,Y)$ and a pair of input channels $X,Y$ as
+%%%%%%%%%%%%
+%\begin{equation}
+%	I(Z;X,Y) = I(X;Z) + I(Y;Z) - I(X;Y;Z) \; .
+%\end{equation}
+%%%%%%%%%%%%
+%That means, if interaction information is negative, more information about $Z$ is conveyed via $X,Y$ taken together than the sum of their individual information content about $Z$. In this scenario, $X,Y$ jointly provide some cooperative information that can not be retrieved by inspecting $X$ and $Y$ individually, in accordance with the interpretation of negative interaction information given above. In the other case, where interaction information is positive, the actual information provided by $X,Y$ is less than their individual information content. This could, for example indicate some form of redundancy, which, again is in accordance to the interpretation of positive interaction information previously given.
+%
+%
+%\section{Possible Future Work}
+%\begin{itemize}
+%	\item As explained, plasticity in distal synapses does not follow a simple Hebbian learning scheme. Rather, experimental evidence suggests that the amount of somatic depolarization can change the sign of plasticity in distal synapses. Therefore, it might be worthwhile investigating the plasticity dynamics of a simple learning rule that incorporates these findings. Actually, if we combine a simple Hebbian learning rule $y_{\rm pre} \cdot y_{\rm post}$ with a multiplicative factor $(y_{\rm post}-\theta)$ that changes sign depending on postsynaptic activity, we essentially get a BCM-like rule:
+%	\begin{equation}
+%		\Delta w_{ij} \propto y_j y_i (y_i - \theta) \; .
+%	\end{equation}
+%	Such a type of learning rule has been studied extensively, however, has not been combined with a basal-distal compartment model.
+%	
+%	An alternative view on plasticity in distal dendrites would be to consider it a distinct synaptic integration zone. From this perspective, one could propose a Hebbian learning rule in which the postsynaptic term is just a function of the local sum of postsynaptic potentials. Similar to what we already found in Sect.~\ref{sect:dist_plast}, one would expect such a learning rule to align weights to the PC of all distal inputs.
+%	
+%	\item Interaction information is a relatively simple quantity that provides some insight into how two (or more) variables are linked with respect to their effect on a third variable. Fore example, in Fig.~\ref{fig:interact_inf}, this measure was numerically calculated for different input statistics of the two-compartment firing rate model given in \eqref{eq:simpl_prox_dist}. Interestingly, increasing the correlation between proximal and distal inputs reverses the direction of the gradient in the space of proximal and distal input variances. However, this should just serve as an exemplary calculation, and it remains to be discussed whether this measure could provide insight e.g. into how such non-linear compartment model differs in its information processing to a simple point neuron model. Furthermore, one could investigate the effects of plasticity onto this quantity.
+%	\item Moldwin and Segev \cite{Moldwin_2020}: Perceptron learning in a biophysical compartment model.$\rightarrow$ maybe test these capabilities in our model?
+%\end{itemize}
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=\textwidth]{./figures/interaction_info_comp_mod.png}
+%	\caption{Interaction information between and proximal input, distal input and the resulting firing rate of the compartment model given by \eqref{eq:simpl_prox_dist}. Inputs are Gaussian random variables with mean values of $0.5$ and standard deviations $\sigma_{\rm P}$ and $\sigma_{\rm D}$ respectively, and a correlation given by $\rho$.}
+%	\label{fig:interact_inf}
+%\end{figure}
 
   
 \bibliographystyle{unsrt}

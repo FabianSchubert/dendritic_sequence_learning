@@ -41,31 +41,14 @@
 \newlabel{eq:approx_delta_w}{{12}{9}}
 \newlabel{eq:mse_diff}{{16}{9}}
 \newlabel{eq:stab_cond_w}{{19}{9}}
-\citation{Urbanczik_2014}
-\citation{Barbas_2015}
-\citation{Larkum_2018}
-\citation{Bastos_2012}
-\citation{Meyer_2011}
-\citation{Barbas_2015}
-\citation{Sjoestroem_2006,Letzkus_2006}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Comparison to a Two-Compartment Model with Error Minimization}{10}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Physiological Basis of the Architecture}{10}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.4.1}What is the Right Plasticity Rule for Distal Synapses?}{10}\protected@file@percent }
-\citation{Gambino_2014}
-\citation{Sjoestroem_2006}
-\citation{Sjoestroem_2006}
-\citation{Williams_2010}
-\citation{Wibral_2017}
-\citation{Kay_2019}
-\citation{Shai_2015}
-\citation{McGill_1954}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces From Sjöström and Häusser \cite  {Sjoestroem_2006}: Somatic depolarization determines whether distal synapses undergo LTD or LTP upon stimulation.}}{11}\protected@file@percent }
-\newlabel{fig:ltp_switch}{{11}{11}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Apical and Basal Compartments from an Information Theoretic Perspective}{11}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.5.1}Partial Information Decompositon}{11}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.5.2}Interaction Information}{11}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Possible Future Work}{12}\protected@file@percent }
-\citation{Moldwin_2020}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Effect of ``Distraction" Components in the Proximal Input}{10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Pattern Classification Task}{10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Normalized mean squared error between $\mathbf  {w}^{\rm  p}$ and vector $\mathbf  {a}$ defining the linear combination of signals presented to the distal input for a given distraction scaling $s$.}}{11}\protected@file@percent }
+\newlabel{fig:distraction_scaling}{{11}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Binary classification accuracy for different amounts of training patterns and different neuron models.}}{12}\protected@file@percent }
+\newlabel{fig:class_accuracy}{{12}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Binary classification accuracy for different amounts of training patterns and different neuron models. Same setup as in Fig.~\ref  {fig:class_accuracy}, but allowing for negative weights in the point and compartment model}}{13}\protected@file@percent }
+\newlabel{fig:class_accuracy_no_constraint}{{13}{13}}
 \bibstyle{unsrt}
 \bibdata{/home/fabian/work/lit_base.bib}
 \bibcite{Shai_2015}{{1}{}{{}}{{}}}
@@ -74,12 +57,12 @@
 \bibcite{Larkum_2018}{{4}{}{{}}{{}}}
 \bibcite{Bastos_2012}{{5}{}{{}}{{}}}
 \bibcite{Meyer_2011}{{6}{}{{}}{{}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Binary classification accuracy for different amounts of training patterns and different neuron models. Same setup as in Fig.~\ref  {fig:class_accuracy}, but with class $0$ appearing with $90\%$ probability (as opposed to a $50/50$ chance as in the previous setups).}}{14}\protected@file@percent }
+\newlabel{fig:class_accuracy_imbalance}{{14}{14}}
 \bibcite{Sjoestroem_2006}{{7}{}{{}}{{}}}
 \bibcite{Letzkus_2006}{{8}{}{{}}{{}}}
 \bibcite{Gambino_2014}{{9}{}{{}}{{}}}
 \bibcite{Williams_2010}{{10}{}{{}}{{}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Interaction information between and proximal input, distal input and the resulting firing rate of the compartment model given by \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:simpl_prox_dist}\unskip \@@italiccorr )}}. Inputs are Gaussian random variables with mean values of $0.5$ and standard deviations $\sigma _{\rm  P}$ and $\sigma _{\rm  D}$ respectively, and a correlation given by $\rho $.}}{14}\protected@file@percent }
-\newlabel{fig:interact_inf}{{12}{14}}
 \bibcite{Wibral_2017}{{11}{}{{}}{{}}}
 \bibcite{Kay_2019}{{12}{}{{}}{{}}}
 \bibcite{McGill_1954}{{13}{}{{}}{{}}}
