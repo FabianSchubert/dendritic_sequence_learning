@@ -327,16 +327,26 @@ However, maximizing covariance is not necessarily the same as maximizing correla
 %%\end{itemize}
 
 \subsection{Effect of ``Distraction" Components in the Proximal Input}
-As already seen previously, using a compartment model forces proximal inputs to a configuration that aligns with the presented distal input, even if the proximal input has a direction of larger variance that does not align with the weight configuration that matches the distal input. We wanted to further quantify this effect systematically. To do so, we devised the following setup: A random sequence for the distal input was generated using the construction given by \eqref{eq:single_neur_1}, that is, a random linear combination of the sequences also presented to the proximal input. However, the proximal input was also subject to a distracting scaling operation perpendicular to the vector $\mathbf{a}$ that defined the linear combination for the distal input. Since the number of proximal input $N_p$ was larger than $2$, this was done by picking a random unit vector in the hyperplane that is orthogonal to $\mathbf{a}$ and then stretching the $N_p$-dimensional input by a factor $s$ along this direction. Therefore, this procedure simulated a ``worst-case scenario" where the proximal input has its greatest variance in a direction perfectly orthogonal to the desired alignment of the weights. For a given scaling factor $s$, we generated multiple trials of this simulation and then calculated the resulting normalized mean squared error
+As already seen previously, using a compartment model forces proximal inputs to a configuration that aligns with the presented distal input, even if the proximal input has a direction of larger variance that does not align with the weight configuration that matches the distal input. We wanted to further quantify this effect systematically. To do so, we devised the following setup: A random sequence for the distal input was generated using the construction given by \eqref{eq:single_neur_1}, that is, a random linear combination of the sequences also presented to the proximal input. However, the proximal input was also subject to a distracting scaling operation perpendicular to the vector $\mathbf{a}$ that defined the linear combination for the distal input. Since the number of proximal input $N_p = 10$ was larger than $2$, this was done by picking a random unit vector in the hyperplane that is orthogonal to $\mathbf{a}$ and then stretching the $N_p$-dimensional input by a factor $s$ along this direction. Therefore, this procedure simulated a ``worst-case scenario" where the proximal input has its greatest variance in a direction perfectly orthogonal to the desired alignment of the weights. For a given scaling factor $s$, we generated multiple trials of this simulation and then calculated the resulting normalized mean squared error
 \begin{equation}
 	MSE = \frac{\left\langle \left\lvert \mathbf{a} - \mathbf{w}^{\rm p} \right\rvert^2\right\rangle}{\left\langle \left\lvert \mathbf{a}\right\rvert^2\right\rangle} \; .
 \end{equation}
 This was done over a range of values of $s$. The results are shown in Fig.~\ref{fig:distraction_scaling}. The compartment model preserves a much better alignment for larger values of $s$, with practically zero error up to a factor of approximately $2.5$.
 
+An alternative protocol was used in Fig.~\ref{fig:distraction_inputs}: Here, $N_p = 20$ and the distal input was composed of the average of $10$ randomly picked sequences. As a distraction for the proximal input, $N$ proximal inputs \emph{other} than those chosen to construct the distal input were elevated by a factor of $2$. Apart from the fact that, like in the previous protocol, the point neuron falls short in aligning the proximal weights, it is interesting to note that increasing the number of distracting inputs decreased its mean squared error. Presumably, this is can be explained by noting that an increased number of elevated inputs makes for a less clearly pronounced first principal component as compared to all other components.
+
+
+
 \begin{figure}
 	\includegraphics[width=\textwidth]{./figures/distraction_scaling.pdf}
 	\caption{Normalized mean squared error between $\mathbf{w}^{\rm p}$ and vector $\mathbf{a}$ defining the linear combination of signals presented to the distal input for a given distraction scaling $s$.}
 	\label{fig:distraction_scaling}
+\end{figure}
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{./figures/distraction_inputs.pdf}
+	\caption{Normalized mean squared error between $\mathbf{w}^{\rm p}$ and vector $\mathbf{a}$ as a function of the number of proximal inputs being elevated in signal strength as a distraction.}
+	\label{fig:distraction_inputs}
 \end{figure}
 
 \subsection{Pattern Classification Task}
