@@ -1,0 +1,52 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[left=1.5cm, right=1.5cm, top=2.50cm, bottom=2.50cm]{geometry}
+\usepackage{multicol}
+\author{Fabian Schubert}
+\title{Nonlinear Dendritic Coincidence Detection for Supervised Learning}
+\begin{document}
+	\maketitle
+	\begin{multicols}{2}
+		\section{Introduction}
+		
+		In recent years, a growing body of research has addressed the 
+		functional implications of the distinct physiology and anatomy of 
+		cortical pyramidal neurons. In particular, on the theoretical side,
+		we saw a paradigm shift from treating neurons as point-like electrical
+		structures towards embracing the entire dendritic structure. This was 
+		mostly due to the fact that experimental work uncovered dynamical properties
+		of these cells that simply could not be accounted for by point models.
+		
+		An important finding was that the apical dendritic tree of
+		cortical pyramidal neurons can act as a separate nonlinear synaptic 
+		integration zone. Under certain conditions, a dendritic $\rm Ca^{2+}$ spike
+		can be elicited that propagates towards the soma, causing rapid, bursting
+		spiking activity. One of the cases in which dendritic spiking can occur
+		was termed 'backpropagation-activated $\rm Ca^{2+}$ spike firing' 
+		('BAC firing'): A single somatic spike can backpropagate towards the apical
+		spike initiation zone, in turn significantly facilitating the initiation of 
+		a dendritic spike. This reciprocal coupling is believed to act as a form of
+		coincidence detection: If apical and basal synaptic input co-occurs, the 
+		neuron can respond with a rapid burst of spiking activity. The firing rate
+		of these temporal bursts exceeds the firing rate that is maximally achievable 
+		under basal synaptic input alone, thus representing a form of temporal coincidence
+		detection between apical and basal input.
+		
+		Naturally, these mechanisms also affect plasticity and thus learning
+		within the cortex. While the interplay between basal and apical stimulation and
+		its effect on synaptic efficacies is subject to ongoing research, there is
+		some evidence that BAC-firing tends to shift plasticity towards long-term potentiation
+		(LTP). Thus, coincidence between basal and apical input appears to also gate synaptic
+		plasticity.
+		
+		In our work, we combined a phenomenological model predicting the output
+		firing rate as a function of two streams of synaptic input (subsuming basal and apical input)
+		with a BCM-like plasticity rule.
+		
+	\end{multicols}
+	
+\end{document}
