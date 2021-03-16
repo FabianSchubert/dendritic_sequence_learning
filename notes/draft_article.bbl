@@ -1,0 +1,25 @@
+\begin{thebibliography}{}
+
+\bibitem[Guerguiev et~al., 2017]{Guerguiev_2017}
+Guerguiev, J., Lillicrap, T.~P., and Richards, B.~A. (2017).
+\newblock {Towards deep learning with segregated dendrites}.
+\newblock {\em eLife}, 6.
+
+\bibitem[Schiess et~al., 2016]{Schiess_2016}
+Schiess, M., Urbanczik, R., and Senn, W. (2016).
+\newblock {Somato-dendritic Synaptic Plasticity and Error-backpropagation in
+  Active Dendrites}.
+\newblock {\em PLoS Computational Biology}, 12(2):1004638.
+
+\bibitem[Shai et~al., 2015]{Shai_2015}
+Shai, A.~S., Anastassiou, C.~A., Larkum, M.~E., and Koch, C. (2015).
+\newblock {Physiology of Layer 5 Pyramidal Neurons in Mouse Primary Visual
+  Cortex: Coincidence Detection through Bursting}.
+\newblock {\em PLOS Computational Biology}, 11(3).
+
+\bibitem[Urbanczik and Senn, 2014]{Urbanczik_2014}
+Urbanczik, R. and Senn, W. (2014).
+\newblock {Learning by the Dendritic Prediction of Somatic Spiking}.
+\newblock {\em Neuron}, 81(3):521--528.
+
+\end{thebibliography}
